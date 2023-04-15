@@ -3,21 +3,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 
 const Preview = (props) => {
-  useEffect(() => {
-    // Create a new iframe and set its source to the bookUrl
-    const iframe = document.createElement("iframe");
-    iframe.src = props.bookUrl;
-    iframe.style.display = "none";
-
-    // Append the iframe to the document's body
-    document.body.appendChild(iframe);
-
-    // Remove the iframe when the component is unmounted
-    return () => {
-      document.body.removeChild(iframe);
-    };
-  }, []);
-
+  
   return (
     <div>
       <h2>Book Preview {props.title}</h2>
