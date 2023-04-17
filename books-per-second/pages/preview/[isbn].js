@@ -6,7 +6,7 @@ const Preview = (props) => {
   
   return (
     <div>
-      <h2>Book Preview {props.title}</h2>
+      <h2>{props.title}</h2>
       {props.bookUrl && (
         //! remove scrolls (exploit)
         <div style={{ width: "100%", height: "800px" }}>
