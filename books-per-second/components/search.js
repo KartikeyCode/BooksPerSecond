@@ -64,7 +64,7 @@ const Search = () => {
         </div>
       </form>
       <div>
-      <h1 className="hover:scale-105 select-none mb-5 mt-16 font-Lato text-2xl lg:text-7xl md:text-5xl sm:text-5xl">
+      <h1 className="hover:scale-105 select-none mb-10 mt-16 font-Lato text-2xl lg:text-7xl md:text-5xl sm:text-5xl">
         Have a good read ⸂⸂⸜(രᴗര๑)⸝⸃⸃
       </h1>
       </div>
@@ -76,7 +76,7 @@ const Search = () => {
               query: { isbn: book.isbn },
             }}
           >
-            <div key={index} className="contact-card basis-72 mb-10 shadow-md rounded-xl flex flex-col p-3 pb-[100px] bg-neutral-800 w-[300px] h-[400px]">
+            <div key={index} className="contact-card basis-72 mb-5 shadow-md rounded-xl flex flex-col p-3 pb-[100px] bg-black w-[300px] h-[400px]">
                 <img className="w-full h-full self-center rounded-md object-cover " src={book.thumbnail} alt={`Thumbnail for ${book.title}`}/>
                 <h3 className="text-lg text-slate-50">{book.title}</h3>
                 <div className="info-group flex items-center">
