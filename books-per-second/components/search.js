@@ -6,7 +6,7 @@ import axios from "axios";
 const Search = () => {
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [startIndex, setStartIndex] = useState(0);
+  const [startIndex, setStartIndex] = useState(5);
 
   const url = `https://www.googleapis.com/books/v1/volumes?q=${searchQuery}&startIndex=${startIndex}&filter=partial`;
 
@@ -44,7 +44,7 @@ const Search = () => {
   };
 
   const handleLoadMore = () => {
-    setStartIndex(startIndex + 10);
+    setStartIndex(startIndex + 5);
     fetchData();
   };
   const handleSearchQueryChange = (e) => {
@@ -55,19 +55,20 @@ const Search = () => {
 
   return (
     <div className='flex flex-col justify-center items-center '>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete="bro">
             <div className='flex flex-row justify-center items-center mt-48' >
-            <input value={searchQuery} onChange={handleSearchQueryChange} autoComplete='off' className=' lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:w-[1200px] lg:w-[600px] md:w-[500px] sm:w-96 w-56 py-3 border-black placeholder:text-black px-3 rounded-full border-4' placeholder='Search for books' type='text'></input>
+            <input value={searchQuery} onChange={handleSearchQueryChange} autoComplete='no' className=' lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:w-[1200px] lg:w-[600px] md:w-[500px] sm:w-96 w-56 py-3 border-black placeholder:text-black px-3 rounded-full border-4' placeholder='Search for books' type='text'></input>
             <div className="flex bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
             <button type="submit" className="font-bold  font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Search</button>
             </div>
         </div>
       </form>
+      <div>
       <h1 className="hover:scale-105 select-none mb-5 mt-16 font-Lato text-2xl lg:text-7xl md:text-5xl sm:text-5xl">
         Have a good read ⸂⸂⸜(രᴗര๑)⸝⸃⸃
       </h1>
-      <div>
-        <div>
+      </div>
+        <div className="flex justify-center flex-row flex-wrap gap-10">
           {books.map((book, index) => (
           <Link target="_blank"
             href={{
@@ -75,21 +76,20 @@ const Search = () => {
               query: { isbn: book.isbn },
             }}
           >
-            <h1 key={index}>
-              <strong>Title:</strong>{" "}
-                {book.title}
-              , <strong>Author:</strong> {book.author}
-              <br />
-              <img src={book.thumbnail} alt={`Thumbnail for ${book.title}`} />
-            </h1>
+            <div key={index} className="contact-card basis-72 mb-10 shadow-md rounded-xl flex flex-col p-3 pb-[100px] bg-neutral-800 w-[300px] h-[400px]">
+                <img className="w-full h-full self-center rounded-md object-cover " src={book.thumbnail} alt={`Thumbnail for ${book.title}`}/>
+                <h3 className="text-lg text-slate-50">{book.title}</h3>
+                <div className="info-group flex items-center">
+                    <p className="text-md text-slate-500">{book.author}</p>
+                </div>
+            </div>
               </Link>
           ))}
-        </div>
+          </div>
         {books.length > 0 && (
           <button onClick={handleLoadMore}>Load more</button>
         )}
       </div>
-    </div>
   );
 };
 
