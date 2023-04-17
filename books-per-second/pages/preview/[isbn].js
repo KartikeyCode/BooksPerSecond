@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
+import Timer from "@/components/timer";
 
 const Preview = (props) => {
-  
   return (
     <div>
       <h2>{props.title}</h2>
@@ -22,6 +22,7 @@ const Preview = (props) => {
           ></iframe>
         </div>
       )}
+      <Timer initialTime={props.initialTime} />
     </div>
   );
 };
