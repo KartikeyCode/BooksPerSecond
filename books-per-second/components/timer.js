@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useTimer } from "use-timer";
+import { GlobalContext } from "@/context/GlobalContext";
 
 // ! if this is set request payment completion first, only then can you move onto the next payment (subject to change)
 const Timer = () => {
+  const { handleSetIsStarted } = useContext(GlobalContext);
   const initialTime =
     typeof localStorage !== "undefined"
       ? Number(localStorage.getItem("time")) || 0
@@ -25,6 +27,7 @@ const Timer = () => {
     reset();
     if (typeof localStorage !== "undefined") {
       localStorage.removeItem("time");
+      handleSetIsStarted(false);
     }
   };
 
@@ -39,15 +42,29 @@ const Timer = () => {
 
     return formattedTime;
   };
+  const handleStart = () => {
+    localStorage.setItem("isStarted", true);
+    handleSetIsStarted(true);
+    start();
+  };
+  const handlePause = () => {
+    localStorage.setItem("isStarted", false);
+    handleSetIsStarted(false);
+    pause();
+  };
 
   return (
     <>
       <div className="flex space-x-2">
-        <button onClick={start}>Start</button>
-        <button onClick={pause}>Pause</button>
-        {/* <button onClick={handleReset}>Reset</button> */}
+        <button onClick={handleStart}>Start</button>
+        <button onClick={handlePause}>Pause</button>
+        <button onClick={handleReset}>Reset</button>
       </div>
-      {time !== 0 && mounted ? <>Elapsed time: {formatTime(time)}</> : <></>}
+      {time !== 0 && mounted ? (
+        <>Elapsed time: {formatTime(time)}</>
+      ) : (
+        <>Elapsed time:</>
+      )}
       {/* {status === "RUNNING" && <p>Running...</p>} */}
     </>
   );

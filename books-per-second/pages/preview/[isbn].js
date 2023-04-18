@@ -1,9 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import Timer from "@/components/timer";
+import { GlobalContext } from "@/context/GlobalContext";
 
 const Preview = (props) => {
+  const router = useRouter();
+  // const { setCurrentIsbn } = useContext(GlobalContext);
+  const isbn = router.query.isbn;
+  console.log(router.query);
+  useEffect(
+    () => {
+      localStorage.setItem("isbn", JSON.stringify(props.isbn));
+      // setCurrentIsbn(isbn);
+    },
+    [router.isReady],
+    []
+  );
   return (
     <div>
       <h2>{props.title}</h2>
@@ -22,7 +35,7 @@ const Preview = (props) => {
           ></iframe>
         </div>
       )}
-      <Timer initialTime={props.initialTime} />
+      <Timer />
     </div>
   );
 };
@@ -39,7 +52,7 @@ export async function getServerSideProps(context) {
     const bookUrl = `${data}&output=embed`;
     const title = response.data.items[0].volumeInfo.title;
     return {
-      props: { bookUrl, title }, // will be passed to the page component as props
+      props: { bookUrl, title, isbn }, // will be passed to the page component as props
     };
   } catch (error) {
     return {

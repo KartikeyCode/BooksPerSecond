@@ -1,5 +1,10 @@
-import '@/styles/globals.css'
+import GlobalState from "@/context/GlobalState";
+import "@/styles/globals.css";
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <GlobalState>
+      <Component {...pageProps} />
+    </GlobalState>
+  );
 }
