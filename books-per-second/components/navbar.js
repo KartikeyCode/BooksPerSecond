@@ -1,5 +1,5 @@
 import { use, useState } from "react"
-
+import {ConnectKitButton} from "connectkit"
 
 export default function Navbar(){
     const [logotext,setLogoText] = useState("Books per Second")
@@ -17,7 +17,10 @@ export default function Navbar(){
                        
             <div className="select-none group flex cursor-pointer" onClick={logo}>
                         <h1 className="text-white  text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold mx-5 md:mx-10 group-hover:scale-105">{logotext}</h1>
-            </div>         
+            </div>     
+            <div className="mr-8">
+            <ConnectKitButton/>    
+            </div>
         </div>
     )
 }

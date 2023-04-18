@@ -4,7 +4,7 @@ import { GlobalContext } from "@/context/GlobalContext";
 
 // ! if this is set request payment completion first, only then can you move onto the next payment (subject to change)
 const Timer = () => {
-  const { handleSetIsStarted } = useContext(GlobalContext);
+  const { handleSetIsStarted, isStarted } = useContext(GlobalContext);
   const initialTime =
     typeof localStorage !== "undefined"
       ? Number(localStorage.getItem("time")) || 0
@@ -52,19 +52,26 @@ const Timer = () => {
     handleSetIsStarted(false);
     pause();
   };
-
+  console.log(isStarted)
   return (
     <>
-      <div className="flex space-x-2">
-        <button onClick={handleStart}>Start</button>
-        <button onClick={handlePause}>Pause</button>
-        <button onClick={handleReset}>Reset</button>
+      <div className="flex mt-5 mx-5">
+      <div className="flex bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
+            <button  onClick={handleStart} className="font-bold  font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Start</button>
+            </div>
+            <div className="flex bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
+            <button onClick={handlePause} className="font-bold  font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Stop</button>
       </div>
+      <div className=" mx-1 border-2 border-black rounded-full px-5 self-center">
+
       {time !== 0 && mounted ? (
-        <>Elapsed time: {formatTime(time)}</>
-      ) : (
-        <>Elapsed time:</>
-      )}
+        <h1 className="font-Lato text-2xl">Elapsed time: {formatTime(time)}</h1>
+        ) : (
+          <h1 className="font-Lato text-2xl">Elapsed time:</h1>
+          )}
+          </div>
+            </div>
+        {/* <button onClick={handleReset}>Reset</button> */}
       {/* {status === "RUNNING" && <p>Running...</p>} */}
     </>
   );

@@ -6,7 +6,7 @@ import { GlobalContext } from "@/context/GlobalContext";
 
 const Preview = (props) => {
   const router = useRouter();
-  // const { setCurrentIsbn } = useContext(GlobalContext);
+  const { isStarted } = useContext(GlobalContext);
   const isbn = router.query.isbn;
   console.log(router.query);
   useEffect(
@@ -22,7 +22,7 @@ const Preview = (props) => {
       <h2>{props.title}</h2>
       {props.bookUrl && (
         //! remove scrolls (exploit)
-        <div style={{ width: "100%", height: "800px" }}>
+        <div className={isStarted?"":"hidden"} style={{ width: "100%", height: "800px" }}>
           <iframe
             src={props.bookUrl}
             style={{
@@ -35,6 +35,9 @@ const Preview = (props) => {
           ></iframe>
         </div>
       )}
+      <div className={`w-full h-[650px] xl:h-[800px] bg-black ${isStarted?"hidden":""}`}>
+
+      </div>
       <Timer />
     </div>
   );

@@ -54,25 +54,13 @@ const Search = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center ">
-      <form onSubmit={handleSubmit} autoComplete="bro">
-        <div className="flex flex-row justify-center items-center mt-48">
-          <input
-            value={searchQuery}
-            onChange={handleSearchQueryChange}
-            autoComplete="no"
-            className=" lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:w-[1200px] lg:w-[600px] md:w-[500px] sm:w-96 w-56 py-3 border-black placeholder:text-black px-3 rounded-full border-4"
-            placeholder="Search for books"
-            type="text"
-          ></input>
-          <div className="flex bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
-            <button
-              type="submit"
-              className="font-bold  font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white"
-            >
-              Search
-            </button>
-          </div>
+    <div className='flex flex-col justify-center items-center '>
+            <form onSubmit={handleSubmit} autoComplete="bro">
+            <div className='flex flex-row justify-center items-center mt-48' >
+            <input value={searchQuery} onChange={handleSearchQueryChange} autoComplete='no' className=' lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:w-[1200px] lg:w-[600px] md:w-[500px] sm:w-96 w-56 pl-6 py-3 border-black placeholder:text-black px-3 rounded-full border-4' placeholder='Search for books' type='text'></input>
+            <div className="flex bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
+            <button type="submit" className="font-bold  font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Search</button>
+            </div>
         </div>
       </form>
       <div>
@@ -103,11 +91,15 @@ const Search = () => {
                 <p className="text-md text-slate-500">{book.author}</p>
               </div>
             </div>
-          </Link>
-        ))}
+              </Link>
+          ))}
+          </div>
+        {books.length > 0 && (
+          <div  className="flex mb-8 bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
+          <button onClick={handleLoadMore} className="font-bold font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Load More</button>
+          </div>
+        )}
       </div>
-      {books.length > 0 && <button onClick={handleLoadMore}>Load more</button>}
-    </div>
   );
 };
 
