@@ -42,24 +42,25 @@ const { address, isConnected} = useAccount()
         Well don't worry cause we've got you covered<br></br>
         ٩(＾◡＾)۶
         <br></br>
-        <b>Pay as you read the book in real time</b>. If you don't like it,
+        <b>Pay for the time you have read the book</b>. If you don't like it,
         <br></br> at least you saved yourself from buying the book at full price
         <br></br>
         ƪ(=ｘωｘ=ƪ)
       </h2>
       <div className="flex bg-black rounded-full h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
             <button onClick={goToList} className="font-bold font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Browse our Books</button>
-            </div>
+      </div>
             {
-              isConnected && (
-
-            <div className='flex flex-row justify-center items-center mt-10' >
-            <input value={parseFloat(formatEther(search))} onChange={handleSearch} autoComplete='off' className=' lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:w-[250px] lg:w-[600px] md:w-[500px] sm:w-96 w-56 pl-6 py-3 border-black placeholder:text-black px-3 rounded-full border-4' type='text'></input>
-            <div className="flex bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
-            <button disabled={!write} onClick={() => write?.()} className="font-bold  font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Buy $TYM</button>
+              
+            <>
+            <div className='flex flex-row justify-center items-center mt-10'>
+              <input value={parseFloat(formatEther(search))} onChange={handleSearch} autoComplete='off' className=' lg:text-4xl md:text-3xl sm:text-2xl text-xl xl:w-[250px] lg:w-[600px] md:w-[500px] sm:w-96 w-56 pl-6 py-3 border-black placeholder:text-black px-3 rounded-full border-4' type='text'></input>
+              <div className="flex bg-black rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
+                <button disabled={!write} onClick={() => write?.()} className="font-bold  font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-black  group-hover:bg-white">Buy $TYM</button>
+              </div>
             </div>
-        </div>
-                )
+            </>
+                
             }
     </div>
   );
