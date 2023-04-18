@@ -4,6 +4,7 @@ import { GlobalContext } from "./GlobalContext";
 const GlobalState = (props) => {
   const [currentIsbn, setCurrentIsbn] = useState();
   const [isStarted, setIsStarted] = useState(false);
+  const [endTime, setEndTime] = useState();
 
   useEffect(() => {
     const storedIsStarted = localStorage.getItem("isStarted");
@@ -16,7 +17,7 @@ const GlobalState = (props) => {
     localStorage.setItem("isStarted", JSON.stringify(value));
     setIsStarted(value);
   };
-  //   console.log(isStarted);
+  console.log(endTime);
   return (
     <GlobalContext.Provider
       value={{
@@ -24,6 +25,8 @@ const GlobalState = (props) => {
         setCurrentIsbn,
         isStarted,
         handleSetIsStarted,
+        endTime,
+        setEndTime,
       }}
     >
       {props.children}
