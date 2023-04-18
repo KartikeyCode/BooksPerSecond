@@ -33,26 +33,32 @@ const Preview = (props) => {
     functionName: "transfer",
     args: ["0xC1b38d568D9de9562261ae9af37c55BFdB0cFFD0", endTime],
   });
-  const { error, data, isSuccess, write } = useContractWrite(config);
-  useEffect(
-    () => {
-      localStorage.setItem("isbn", JSON.stringify(props.isbn));
-      // setCurrentIsbn(isbn);
-    },
-    [router.isReady],
-    []
-  );
+  let { error, data, isSuccess, write } = useContractWrite(config);
+  // useEffect(
+  //   () => {
+  //     localStorage.setItem("isbn", JSON.stringify(props.isbn));
+  //     // setCurrentIsbn(isbn);
+  //   },
+  //   [router.isReady],
+  //   []
+  // );
   useEffect(() => {
     handleSetIsStarted(false);
   }, []);
 
+
+
   if (isSuccess) {
     console.log("Paid");
-    handleReset();
-    router.push("/")
+    // handleReset();
+    localStorage.removeItem("time")
+    location.href = "/"
+  
+    
   } else {
     console.log(error);
   }
+
   return (
     <div>
       <h2>{props.title}</h2>

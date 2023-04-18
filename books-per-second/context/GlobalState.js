@@ -11,7 +11,7 @@ const GlobalState = (props) => {
     if (storedIsStarted !== null) {
       setIsStarted(JSON.parse(storedIsStarted));
     }
-  }, [isStarted]);
+  }, []);
 
   const handleSetIsStarted = (value) => {
     localStorage.setItem("isStarted", JSON.stringify(value));
@@ -28,7 +28,7 @@ const GlobalState = (props) => {
         setEndTime,
       }}
     >
-      {props.children}
+      {props.children} 
     </GlobalContext.Provider>
   );
 };
