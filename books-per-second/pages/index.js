@@ -1,7 +1,5 @@
-import dynamic from "next/dynamic";
-
-const Landing = dynamic(() => import("@/components/landing"));
-const Navbar = dynamic(() => import("@/components/navbar"));
+import Landing from "@/components/landing";
+import Navbar from "@/components/navbar";
 
 export default function App() {
   // const router = useRouter();
