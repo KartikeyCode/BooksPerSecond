@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useTimer } from "use-timer";
 import { GlobalContext } from "@/context/GlobalContext";
+import { BigNumber } from "ethers";
+import { parseEther } from "ethers/lib/utils.js";
 
 // ! if this is set request payment completion first, only then can you move onto the next payment (subject to change)
 const Timer = () => {
@@ -52,7 +54,7 @@ const Timer = () => {
     localStorage.setItem("isStarted", false);
     handleSetIsStarted(false);
     pause();
-    setEndTime(localStorage.getItem("time"));
+    setEndTime(parseEther(localStorage.getItem("time")));
   };
   // console.log(isStarted); chk renders
   return (

@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
-
+import { BigNumber } from "ethers"; 
 const GlobalState = (props) => {
   const [currentIsbn, setCurrentIsbn] = useState();
   const [isStarted, setIsStarted] = useState(false);
-  const [endTime, setEndTime] = useState();
+  const [endTime, setEndTime] = useState(BigNumber.from(0));
 
   useEffect(() => {
     const storedIsStarted = localStorage.getItem("isStarted");
@@ -17,7 +17,6 @@ const GlobalState = (props) => {
     localStorage.setItem("isStarted", JSON.stringify(value));
     setIsStarted(value);
   };
-  console.log(endTime);
   return (
     <GlobalContext.Provider
       value={{
