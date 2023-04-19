@@ -4,7 +4,7 @@ import React from "react";
 const notFound = () => {
   const router = useRouter();
   setTimeout(() => {
-    router.push("/");
+    router.push("/searchpage");
   }, 2000);
   return (
     <div className="text-red-700 font-mono">
