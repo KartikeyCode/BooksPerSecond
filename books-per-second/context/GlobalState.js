@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { GlobalContext } from "./GlobalContext";
-import { BigNumber } from "ethers"; 
+import { BigNumber } from "ethers";
 const GlobalState = (props) => {
   const [currentIsbn, setCurrentIsbn] = useState();
   const [isStarted, setIsStarted] = useState(false);
   const [endTime, setEndTime] = useState(BigNumber.from(0));
+  const [checkIsConnected, setCheckIsConnected] = useState(false);
 
   useEffect(() => {
     const storedIsStarted = localStorage.getItem("isStarted");
@@ -26,9 +27,11 @@ const GlobalState = (props) => {
         handleSetIsStarted,
         endTime,
         setEndTime,
+        setCheckIsConnected,
+        checkIsConnected,
       }}
     >
-      {props.children} 
+      {props.children}
     </GlobalContext.Provider>
   );
 };

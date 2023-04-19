@@ -11,7 +11,7 @@ import { useTimer } from "use-timer";
 import { formatEther } from "ethers/lib/utils.js";
 
 const Preview = (props) => {
-  const { address, isConnected } = useAccount();
+  const { isConnected } = useAccount();
 
   const { reset } = useTimer();
   const handleReset = () => {
@@ -23,7 +23,8 @@ const Preview = (props) => {
     }
   };
   const router = useRouter();
-  const { handleSetIsStarted, isStarted, endTime } = useContext(GlobalContext);
+  const { handleSetIsStarted, isStarted, endTime, checkIsConnected } =
+    useContext(GlobalContext);
   console.log(endTime);
 
   const isbn = router.query.isbn;
@@ -34,21 +35,19 @@ const Preview = (props) => {
     args: ["0xC1b38d568D9de9562261ae9af37c55BFdB0cFFD0", endTime],
   });
   let { error, data, isSuccess, write } = useContractWrite(config);
-  // useEffect(
-  //   () => {
-  //     localStorage.setItem("isbn", JSON.stringify(props.isbn));
-  //     // setCurrentIsbn(isbn);
-  //   },
-  //   [router.isReady],
-  //   []
-  // );
+
   useEffect(() => {
     handleSetIsStarted(false);
-  }, []);
+    if (!isConnected) {
+      console.log(isConnected);
+      router.push("/error/unauthenticated");
+    } else {
+      console.log("allow read");
+    }
+  }, [isConnected]);
 
   if (isSuccess) {
     console.log("Paid");
-    // handleReset();
     localStorage.removeItem("time");
     location.href = "/";
   } else {
@@ -119,7 +118,7 @@ export async function getServerSideProps(context) {
       // todo : redirect to an error handling page that says that the book is not valid/available
       redirect: {
         permanent: false,
-        destination: "/",
+        destination: "/error/notFound",
       },
     };
   }
