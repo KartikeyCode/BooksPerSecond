@@ -46,15 +46,11 @@ const Preview = (props) => {
     handleSetIsStarted(false);
   }, []);
 
-
-
   if (isSuccess) {
     console.log("Paid");
     // handleReset();
-    localStorage.removeItem("time")
-    location.href = "/"
-  
-    
+    localStorage.removeItem("time");
+    location.href = "/";
   } else {
     console.log(error);
   }
@@ -88,24 +84,21 @@ const Preview = (props) => {
         <h1 className="font-Lato text-white text-5xl">
           Total Amount:{formatEther(endTime)}
         </h1>
-        {(formatEther(endTime)>0) && (
-  <div className=" mt-10 flex mb-8 bg-white rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
-    <button
-      onClick={() => write?.()}
-      className="font-bold font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-white  group-hover:bg-black"
-    >
-      Pay
-    </button>
-  </div>
-)}
-
+        {formatEther(endTime) > 0 && (
+          <div className=" mt-10 flex mb-8 bg-white rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">
+            <button
+              onClick={() => write?.()}
+              className="font-bold font-Lato text-xl transition ease-in-out duration-100 bg-black rounded-full h-14 self-center text-white px-6 group-hover:text-white  group-hover:bg-black"
+            >
+              Pay
+            </button>
+          </div>
+        )}
       </div>
       <Timer />
     </div>
   );
 };
-
-
 
 export default Preview;
 
@@ -116,7 +109,7 @@ export async function getServerSideProps(context) {
       `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`
     );
     const data = response.data.items[0].volumeInfo.previewLink;
-    const bookUrl = `${data}&output=embed`;
+    const bookUrl = `${data}&output=embed`.replace(/^http:\/\//i, "https://");
     const title = response.data.items[0].volumeInfo.title;
     return {
       props: { bookUrl, title, isbn }, // will be passed to the page component as props
