@@ -5,7 +5,7 @@ const GlobalState = (props) => {
   const [currentIsbn, setCurrentIsbn] = useState();
   const [isStarted, setIsStarted] = useState(false);
   const [endTime, setEndTime] = useState(BigNumber.from(0));
-  const [checkIsConnected, setCheckIsConnected] = useState(false);
+  const [bookPayment, setBookPayment] = useState(false);
 
   useEffect(() => {
     const storedIsStarted = localStorage.getItem("isStarted");
@@ -27,8 +27,8 @@ const GlobalState = (props) => {
         handleSetIsStarted,
         endTime,
         setEndTime,
-        setCheckIsConnected,
-        checkIsConnected,
+        setBookPayment,
+        bookPayment,
       }}
     >
       {props.children}

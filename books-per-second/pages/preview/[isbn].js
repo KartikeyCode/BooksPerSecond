@@ -23,7 +23,7 @@ const Preview = (props) => {
     }
   };
   const router = useRouter();
-  const { handleSetIsStarted, isStarted, endTime, checkIsConnected } =
+  const { handleSetIsStarted, isStarted, endTime, setBookPayment } =
     useContext(GlobalContext);
   console.log(endTime);
 
@@ -47,9 +47,10 @@ const Preview = (props) => {
   }, [isConnected]);
 
   if (isSuccess) {
+    setBookPayment(true);
     console.log("Paid");
     localStorage.removeItem("time");
-    location.href = "/";
+    router.push("/");
   } else {
     console.log(error);
   }
