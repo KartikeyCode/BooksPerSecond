@@ -21,3 +21,5 @@ We respect your privacy, and we don't collect any personal information from you.
 We're always looking for ways to improve our website, so please don't hesitate to give us your feedback. You can reach us at codekartikey@gmail.com or ishaankhurana123@gmail.com
 
 Thank you for using our website, and happy reading!
+
+Checkout the Vercel deploy here: https://books-per-second.vercel.app/
