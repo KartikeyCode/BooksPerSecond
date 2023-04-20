@@ -1,4 +1,5 @@
 # Welcome to BooksPerSecond
+# Checkout the Vercel deploy here: https://books-per-second.vercel.app/
 This website uses the latest technologies in decentralized finance (DeFi) to offer a unique experience to book lovers who don't like wasting money. Using the power of the Wagmi protocol and the Ethereum network, you can now pay for the books you read on our website based on the amount of time you spend reading them.
 # How it works
 To use our website, you'll need to have an Ethereum wallet and some MATIC (Polygon TestNet) in it. If you don't have an Ethereum wallet, you can create one using Metamask or any other compatible wallet.
@@ -22,4 +23,4 @@ We're always looking for ways to improve our website, so please don't hesitate t
 
 Thank you for using our website, and happy reading!
 
-Checkout the Vercel deploy here: https://books-per-second.vercel.app/
+
