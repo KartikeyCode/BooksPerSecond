@@ -72,6 +72,7 @@ const Preview = (props) => {
               height: "100%",
               overflow: "hidden",
             }}
+            loading="lazy"
             className="overscroll-none"
           ></iframe>
         </div>
