@@ -79,14 +79,14 @@ const Search = () => {
           >
             <div
               key={index}
-              className="contact-card basis-72 mb-5 shadow-md rounded-xl flex flex-col p-3 pb-[100px] bg-black w-[300px] h-[400px]"
+              className="contact-card basis-72 mb-5 shadow-md rounded-xl flex flex-col p-3  bg-black w-[300px] h-[600px]"
             >
               <img
-                className="w-full h-full self-center rounded-md object-cover "
+                className="w-full h-full self-center rounded-md object-cover mb-2"
                 src={book.thumbnail}
                 alt={`Thumbnail for ${book.title}`}
               />
-              <h3 className="text-lg text-slate-50">{book.title}</h3>
+              <h3 className="text-lg text-slate-50 truncate">{book.title}</h3>
               <div className="info-group flex items-center">
                 <p className="text-md text-slate-500">{book.author}</p>
               </div>

@@ -62,7 +62,7 @@ const Preview = (props) => {
         //! remove scrolls (exploit)
         <div
           className={isStarted ? "" : "hidden"}
-          style={{ width: "100%", height: "800px" }}
+          style={{ width: "100%", height: "620px" }}
         >
           <iframe
             src={props.bookUrl}
@@ -78,12 +78,12 @@ const Preview = (props) => {
         </div>
       )}
       <div
-        className={`w-full h-[650px] xl:h-[800px] flex flex-col justify-center items-center bg-black ${
+        className={`w-full h-[650px] xl:h-[620px] flex flex-col justify-center items-center bg-black ${
           isStarted ? "hidden" : ""
         }`}
       >
         <h1 className="font-Lato text-white text-5xl">
-          Total Amount:{formatEther(endTime)}
+          Total Amount: {formatEther(endTime)}
         </h1>
         {formatEther(endTime) > 0 && (
           <div className=" mt-10 flex mb-8 bg-white rounded-full  h-16 self-center pr-[2px] pl-[4px] group hover:scale-105 hover:pb-1 cursor-pointer mx-1">

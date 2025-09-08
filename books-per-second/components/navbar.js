@@ -13,7 +13,7 @@ export default function Navbar(){
     }
 
     return(
-        <div className="items-center justify-between flex w-full h-24 top-0 sticky bg-black">
+        <div className="items-center justify-between flex w-full h-20 top-0 sticky bg-black">
                        
             <div className="select-none group flex cursor-pointer" onClick={logo}>
                         <h1 className="text-white  text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold mx-5 md:mx-10 group-hover:scale-105">{logotext}</h1>
