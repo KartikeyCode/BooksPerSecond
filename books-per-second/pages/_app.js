@@ -2,8 +2,8 @@ import GlobalState from "@/context/GlobalState";
 import "@/styles/globals.css";
 import { WagmiConfig, createClient } from "wagmi";
 import { ConnectKitProvider, getDefaultClient } from "connectkit";
-import { polygon, polygonMumbai} from "wagmi/chains";
-const chains = [polygonMumbai,polygon];
+import { sepolia} from "wagmi/chains";
+const chains = [sepolia];
 
 const client = createClient(
   getDefaultClient({
